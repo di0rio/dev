@@ -43,7 +43,10 @@ console.log({ some });
 const every = produtos.every(item => item.quantidade > 0);
 console.log(produtos);
 
+//----------------------------------------------------------------------
+
 // .map GOAT
+//cria um novo array com a mesma quantidade
 //return para nao retornar map undefined!
 //sempre sera um array quando retornar
 const map = produtos.map((produto) => { })
@@ -55,16 +58,16 @@ const produtosMap = [
     { produto: "Açúcar", preco: 5.00, quantidade: 1 }
 ];
 
-// O .map() gera um novo array com os preços alterados
+//o .map() gera um novo array com os preços alterados
 const produtosComDesconto = produtosMap.map(item => {
     return {
-        ...item,                 // Copia as propriedades originais (produto e quantidade)
-        preco: item.preco * 0.9  // Calcula o novo preço com 10% de desconto
+        ...item,                 //copia as propriedades originais (produto e quantidade)
+        preco: item.preco * 0.9  //calcula o novo preço com 10% de desconto
     };
 });
 
 console.log(produtosComDesconto);
-/* Saída:
+/*saída:
 [
   { produto: 'Cafeteira Elétrica', preco: 126, quantidade: 2 },
   { produto: 'Cápsulas de Café', preco: 18, quantidade: 5 },
@@ -75,6 +78,24 @@ console.log(produtosComDesconto);
 const apenasNomes = produtosMap.map(item => item.produto);
 
 console.log(apenasNomes);
-// Saída: [ 'Cafeteira Elétrica', 'Cápsulas de Café', 'Açúcar' ]
+//saída: [ 'Cafeteira Elétrica', 'Cápsulas de Café', 'Açúcar' ]
 
+//----------------------------------------------------------------------
 
+//filterzao brabo
+//cria um novo array, porem nao com a mesma quantidade
+const filter = produtos.filter(item => item.quantidade > 0);
+
+console.log(filter);
+
+//----------------------------------------------------------------------
+
+//reduce?
+//uso mais clássico dele é somar o valor total de um carrinho de compras.
+//o reduce recebe dois parâmetros principais: a função de cálculo e o valor inicial (0)
+const valorTotalCarrinho = produtos.reduce((acumulador, item) => {
+    const subtotalItem = item.preco * item.quantidade;
+    return acumulador + subtotalItem;
+}, 0); //valor inicial o 0
+
+console.log(valorTotalCarrinho); 
